@@ -113,8 +113,7 @@ impl error::Error for PlanError {
 /// Encapsulates the FFT kernel configuration.
 #[derive(Debug)]
 pub struct Setup<T> {
-    #[doc(hidden)]
-    pub kernels: Vec<Box<Kernel<T>>>,
+    pub(crate) kernels: Vec<Box<Kernel<T>>>,
 }
 
 pub fn factorize_radix2(x: usize) -> Result<Vec<usize>, PlanError> {
@@ -286,8 +285,7 @@ where
         Ok(Self { kernels: kernels })
     }
 
-    #[doc(hidden)]
-    pub fn required_work_area_size(&self) -> usize {
+    pub(crate) fn required_work_area_size(&self) -> usize {
         self.kernels
             .iter()
             .map(|k| k.required_work_area_size())
