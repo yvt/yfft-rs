@@ -102,6 +102,3 @@ fn mul_pos_i<T: Num>(x: Complex<T>) -> Complex<T> {
 
 pub use env::Env;
 pub use setup::{DataFormat, DataOrder, Options, PlanError, Setup};
-
-#[cfg(test)]
-mod benchmark;
