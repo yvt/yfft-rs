@@ -34,11 +34,8 @@ where
             work_area: self.work_area.as_mut_slice(),
         };
         let setup = self.setup.borrow();
-        // println!("{:#?}", setup);
-        // println!("{:#?}", &unsafe{::std::mem::transmute::<&[TNum], &[::num_complex::Complex<TNum>]>(kernel_param.coefs)}[0 .. kernel_param.coefs.len() / 2]);
         for kernel in &setup.kernels {
             kernel.transform(&mut kernel_param);
-            // println!("{:#?}", &unsafe{::std::mem::transmute::<&[TNum], &[::num_complex::Complex<TNum>]>(kernel_param.coefs)}[0 .. kernel_param.coefs.len() / 2]);
         }
     }
 }
