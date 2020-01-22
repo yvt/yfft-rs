@@ -1,4 +1,3 @@
-
 //! Defines generic FFT kernels optimized for certain known radix values, but without any specific processor or
 //! instruction set specific optimizations.
 //!

@@ -1,4 +1,3 @@
-
 //! Defines FFT kernels optimized for x86 and x86_64 systems.
 
 use super::super::Num;

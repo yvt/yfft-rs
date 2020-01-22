@@ -1,4 +1,3 @@
-
 //! Defines Radix-2 single precision FFT kernels optimized by using AVX instruction set.
 //!
 //! AVX expands the register width to 256bit and adds the 256-bit counterparts of most existing instructions.

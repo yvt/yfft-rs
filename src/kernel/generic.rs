@@ -1,4 +1,3 @@
-
 //! Defines generic FFT kernels that don't make any assumptions about radix or instruction set.
 //!
 //! Performances

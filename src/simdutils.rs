@@ -1,10 +1,9 @@
-
+pub use packed_simd::{f32x4, f32x8, i32x4, i32x8, u32x4, u32x8, u64x4};
 #[cfg(target_arch = "x86")]
 use std::arch::x86 as vendor;
 #[cfg(target_arch = "x86_64")]
 use std::arch::x86_64 as vendor;
 use std::mem;
-pub use packed_simd::{f32x8, i32x8, u32x8, u64x4, f32x4, i32x4, u32x4};
 
 #[cfg(test)]
 use num_complex::Complex;

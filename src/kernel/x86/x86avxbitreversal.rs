@@ -2,7 +2,7 @@ use super::super::Num;
 use super::utils::{if_compatible, AlignInfo, AlignReqKernel, AlignReqKernelWrapper};
 use super::{Kernel, KernelParams, SliceAccessor};
 
-use packed_simd::{u32x4, u64x4, u64x2};
+use packed_simd::{u32x4, u64x2, u64x4};
 
 use std::{mem, ptr};
 

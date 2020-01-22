@@ -1,4 +1,3 @@
-
 //! Defines Radix-4 FFT kernels optimized by using SSE instruction set.
 //!
 //! Performances

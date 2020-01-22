@@ -1,4 +1,3 @@
-
 use super::kernel::{
     new_bit_reversal_kernel, new_half_complex_to_complex_kernel,
     new_real_fft_pre_post_process_kernel, new_real_to_complex_kernel, Kernel, KernelCreationParams,

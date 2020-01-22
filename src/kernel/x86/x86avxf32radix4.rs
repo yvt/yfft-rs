@@ -1,4 +1,3 @@
-
 //! Defines Radix-4 single precision FFT kernels optimized by using AVX instruction set.
 //!
 //! AVX expands the register width to 256bit and adds the 256-bit counterparts of most existing instructions.
@@ -313,10 +312,8 @@ impl<T: StaticParams> AlignReqKernel<f32> for AvxRadix4Kernel3<T> {
                 let w3t = y2 - w2;
 
                 // w3 = w3t * i
-                let w3 = avx_f32x8_bitxor(
-                    shuffle!(w3t, w3t, [1, 0, 11, 10, 5, 4, 15, 14]),
-                    neg_mask2,
-                );
+                let w3 =
+                    avx_f32x8_bitxor(shuffle!(w3t, w3t, [1, 0, 11, 10, 5, 4, 15, 14]), neg_mask2);
 
                 let (x4, y4, z4, w4) = if sparams.inverse() {
                     (x3 + y3, z3 + w3, x3 - y3, z3 - w3)

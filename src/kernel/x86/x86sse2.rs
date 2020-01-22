@@ -1,4 +1,3 @@
-
 //! Defines FFT kernels optimized by using SSE2 instruction set.
 //!
 //! Performances
