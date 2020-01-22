@@ -34,6 +34,84 @@
 //!
 //! Note: this causes codegen to generate VEX prefixes to all SSE instructions and makes the binary
 //! incompatible with processors without AVX support.
+//!
+//! # Example: Round-trip Conversion
+//!
+//! ```
+//! use yfft::{Setup, Options, DataOrder, DataFormat, Env};
+//!
+//! let size = 128;
+//!
+//! let setup1: Setup<f32> = Setup::new(&Options {
+//!     input_data_order: DataOrder::Natural,
+//!     output_data_order: DataOrder::Swizzled,
+//!     input_data_format: DataFormat::Complex,
+//!     output_data_format: DataFormat::Complex,
+//!     len: size,
+//!     inverse: false,
+//! })
+//! .unwrap();
+//! let setup2: Setup<f32> = Setup::new(&Options {
+//!     input_data_order: DataOrder::Swizzled,
+//!     output_data_order: DataOrder::Natural,
+//!     input_data_format: DataFormat::Complex,
+//!     output_data_format: DataFormat::Complex,
+//!     len: size,
+//!     inverse: true,
+//! })
+//! .unwrap();
+//!
+//! // Allocate temporary buffers
+//! let mut env1 = Env::new(&setup1);
+//! let mut env2 = Env::new(&setup2);
+//!
+//! // Input data (interleaved complex format)
+//! let mut pat = vec![0.0f32; size * 2];
+//! pat[42] = 100.0;
+//! pat[82] = 200.0;
+//!
+//! let mut result = vec![0.0f32; size * 2];
+//! result.copy_from_slice(&pat);
+//!
+//! // Round-trip transform
+//! env1.transform(&mut result);
+//! env2.transform(&mut result);
+//!
+//! for e in &mut result {
+//!     *e = *e / size as f32;
+//! }
+//!
+//! assert_num_slice_approx_eq(
+//!     &result,
+//!     &pat,
+//!     1.0e-3f32
+//! );
+//!
+//! # fn assert_num_slice_approx_eq<T: yfft::Num>(got: &[T], expected: &[T], releps: T) {
+//! #     assert_eq!(got.len(), expected.len());
+//! #     // We can't use `Iterator::max()` because T doesn't implement Ord
+//! #     let maxabs = expected
+//! #         .iter()
+//! #         .map(|x| x.abs())
+//! #         .fold(T::zero() / T::zero(), |x, y| x.max(y))
+//! #         + T::from(0.01).unwrap();
+//! #     let eps = maxabs * releps;
+//! #     for i in 0..got.len() {
+//! #         let a = got[i];
+//! #         let b = expected[i];
+//! #         if (a - b).abs() > eps {
+//! #             assert!(
+//! #                 (a - b).abs() < eps,
+//! #                 "assertion failed: `got almost equal to expected` \
+//! #                  (got: `{:?}`, expected: `{:?}`, diff=`{:?}`)",
+//! #                 got,
+//! #                 expected,
+//! #                 (a - b).abs()
+//! #             );
+//! #         }
+//! #     }
+//! # }
+//! ```
 
 #![cfg_attr(test, feature(test))]
 #![feature(platform_intrinsics)]
