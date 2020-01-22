@@ -9,3 +9,6 @@ num-complex = "0.1.36"
 num-iter = "0.1.33"
 num-traits = "0.1.37"
 packed_simd = "0.3.0"
+
+[badges]
+maintenance = { status = "passively-maintained" }
