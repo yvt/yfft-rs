@@ -8,7 +8,8 @@ Simple FFT library written purely in Rust. Requires a Nightly Rust compiler for 
 
 ## Features
 
- - Features highly optimized FFT kernels for small, power-of-two transforms.
+ - Features moderately optimized FFT kernels for small, power-of-two
+   transforms.
  - Supports real-to-complex and complex-to-real transforms.
  - Clients can opt in to a swizzled input/output data order when they don't
    need naturally-ordered data.
