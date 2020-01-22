@@ -8,20 +8,20 @@ Simple FFT library written purely in Rust. Requires a Nightly Rust compiler for 
 
 ## Features
 
- - Features moderately optimized FFT kernels for small, power-of-two
-   transforms.
+ - Features moderately optimized FFT kernels for small, power-of-two,
+   single precision transforms.
  - Supports real-to-complex and complex-to-real transforms.
  - Clients can opt in to a swizzled input/output data order when they don't
    need naturally-ordered data.
 
 ## Limitations
 
-This library was written in 2017 for internal use and is not actively
-maintained anymore. For this reason, this library has the following
-important limitations:
+This library was written in 2017 for internal use (specifically, real-time
+game audio processing) and is not actively maintained anymore. For this
+reason, this library has the following important limitations:
 
- - It's only optimized for small, power-of-two transforms. It may work for
-   other sizes, but it will use extremely slow code paths.
+ - It's only optimized for small, power-of-two, single precision transforms.
+   It may work for other sizes, but it will use extremely slow code paths.
  - It only supports 1D transforms.
  - It does not support detecting processor features at runtime.
  - The implementation relies on **a plenty of unsafe Rust code**.
