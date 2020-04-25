@@ -9,7 +9,7 @@ description = """
 Simple fast Fourier transform library optimized for small, power-of-two,
 single precision transforms and x86 systems
 """
-keywords = ["fft", "dft", "discrete", "numerics", "dsp", "fourier", "transform"]
+keywords = ["fft", "dft", "dsp", "fourier", "transform"]
 categories = ["algorithms", "science"]
 
 [dependencies]
