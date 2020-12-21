@@ -16,7 +16,7 @@ categories = ["algorithms", "science"]
 num-complex = "0.1.36"
 num-iter = "0.1.33"
 num-traits = "0.1.37"
-packed_simd = "0.3.0"
+packed_simd = { version = "0.3.4", package = "packed_simd_2" }
 
 [badges]
 maintenance = { status = "passively-maintained" }
