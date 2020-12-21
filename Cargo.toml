@@ -20,3 +20,6 @@ packed_simd = { version = "0.3.4", package = "packed_simd_2" }
 
 [badges]
 maintenance = { status = "passively-maintained" }
+
+[profile.release]
+lto = true
